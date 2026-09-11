@@ -1,0 +1,23 @@
+warning: mathlib: repository '/root/erdosfire-bench/proofs/.lake/packages/mathlib' has local changes
+warning: plausible: repository '/root/erdosfire-bench/proofs/.lake/packages/plausible' has local changes
+warning: LeanSearchClient: repository '/root/erdosfire-bench/proofs/.lake/packages/LeanSearchClient' has local changes
+warning: importGraph: repository '/root/erdosfire-bench/proofs/.lake/packages/importGraph' has local changes
+warning: proofwidgets: repository '/root/erdosfire-bench/proofs/.lake/packages/proofwidgets' has local changes
+warning: aesop: repository '/root/erdosfire-bench/proofs/.lake/packages/aesop' has local changes
+warning: Qq: repository '/root/erdosfire-bench/proofs/.lake/packages/Qq' has local changes
+warning: batteries: repository '/root/erdosfire-bench/proofs/.lake/packages/batteries' has local changes
+warning: Cli: repository '/root/erdosfire-bench/proofs/.lake/packages/Cli' has local changes
+js835/JSpace835/Attempts/10_DirectK16CloseProbe.lean:18:4: error: Type mismatch
+  hj
+has type
+  ↑⌈↑(Nat.choose 32 16) / 35357670⌉₊ ≤ χ(J(32, 16))
+but is expected to have type
+  17 ≤ χ(J(32, 16))
+js835/JSpace835/Attempts/10_DirectK16CloseProbe.lean:21:20: warning: aesop: failed to prove the goal after exhaustive search.
+js835/JSpace835/Attempts/10_DirectK16CloseProbe.lean:20:42: error: unsolved goals
+hchi : χ(J(32, 16)) = 16 + 1
+hj : ↑⌈↑(Nat.choose 32 16) / ↑(Erdos835.johnsonBound 32 4 16)⌉₊ ≤ 16 + 1
+hbound : 17 ≤ 16 + 1
+⊢ 18 ≤ 16 + 1
+js835/JSpace835/Attempts/10_DirectK16CloseProbe.lean:22:2: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.

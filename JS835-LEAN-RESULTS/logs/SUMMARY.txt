@@ -1,0 +1,267 @@
+JSPACE v0.8 - ERDOS #835 - LEAN 10-SHOT :: LOCAL RUN RESULTS
+============================================================
+PACKET SHA-256 : 8e026f22cc1f86e4cd8e420c891c78984417b5027ee986ca69553b0740d8f15e  (VERIFIED)
+TOOLCHAIN RUN  : Lean 4.31.0-rc1 / Lake 5.0.0 (NOT the requested 4.27.0 - see NOTE 1)
+MATHLIB        : leanprover-community/mathlib4 @ master-2026-05-31 (8,120 oleans, prebuilt)
+FC CORPUS      : vendored google-deepmind/formal-conjectures tree, Erdos835 module built
+DATE           : 2026-08-19
+
+FIRST-FIRE RESULTS (packet source unmodified except where NOTE 2 applies)
+------------------------------------------------------------------------
+01_OfficialBoundary            FAIL  exit=1    7s
+02_FiberPrimeCollapse          PASS  exit=0   12s
+03_P15KernelPack               PASS  exit=0   10s
+04_RemainderK5Obstruction      PASS  exit=0    8s
+05_RepairRadiusArithmetic      PASS  exit=0    7s
+06_OneCoordinateRigidityProbe  FAIL  exit=1    8s
+07_PairTradeKernelProbe        PASS  exit=0    7s
+08_Property16_to_SQS20_Probe   FAIL  exit=1    8s
+09_Property16_to_S451_Probe    FAIL  exit=1    7s
+10_DirectK16CloseProbe         FAIL  exit=1    7s
+                               5 PASS / 5 FAIL
+
+REPAIR PASS (our additions; original attempt files left untouched)
+------------------------------------------------------------------
+R08 (maxRecDepth raised only)  FAIL  -> emits the CLEAN transfer frontier goal
+R09 (maxRecDepth raised only)  FAIL  -> emits the CLEAN transfer frontier goal
+R10b (arithmetic bridged)      PASS  -> proves shot 10 route is UNSOUND, kernel-clean
+R01 (arithmetic bridged)       PASS  -> but carries sorryAx (see FINDING 1)
+R11 (native_decide -> decide)  PARTIAL -> 2 claims upgraded to ZERO axioms
+
+NOTE 1 - TOOLCHAIN. The requested Lean 4.27.0 + mathlib v4.27.0 was NOT used. Building it
+  meant a ~5 GB mathlib olean download; the operator stopped that. Everything below ran on
+  the mathlib already built on this machine. Three real version-drift breaks in the FC tree
+  had to be fixed to make Erdos835 elaborate at all (see FIXES). Results are therefore
+  4.31.0-rc1 results, not 4.27.0 results.
+
+NOTE 2 - PACKET DEFECTS FIXED TO MAKE IT RUN AT ALL.
+  a) Data.lean blew maxRecDepth on the 4,275-block literal   -> set_option maxRecDepth
+  b) List.get! was REMOVED from core Lean after v4.29         -> restored with its exact
+     original semantics (getD n default) as a local definition; packet source unchanged
+
+FIXES APPLIED TO THE VENDORED FORMALCONJECTURES TREE (version drift, not packet faults)
+---------------------------------------------------------------------------------------
+  1) Mathlib.Combinatorics.SimpleGraph.Coloring was SPLIT upstream; chromaticNumber now
+     lives in .Coloring.VertexColoring. Import repointed.
+  2) Johnson.lean: `Irreflexive` deprecated to `Std.Irrefl` (a class, not a Pi type), so
+     `simp +contextual [Irreflexive]` made no progress and left the def with metavariables.
+     Replaced with an explicit proof of the same fact.
+  3) Coloring.lean: `simpa [IsIndepSet, Set.Pairwise] using ...` no longer normalises
+     bipartiteBelow membership to colorClass form. Replaced with a direct proof from
+     Coloring.valid.
+
+============================================================================
+AXIOM-FOOTPRINT AUDIT  -  the part that decides whether a PASS means anything
+============================================================================
+The packet states its claims as anonymous `example`s, which `#print axioms` cannot inspect.
+We restated every green claim as a NAMED theorem with the SAME statement and SAME proof
+(Audit/AxiomAudit.lean) and printed the footprint. Clean set = {propext, Classical.choice,
+Quot.sound}. Anything else is not a kernel proof.
+
+  A02_fiber       [native_decide ax]                      NOT kernel
+  A02_mod17       [propext, Quot.sound, native_decide ax]  NOT kernel
+  A03_allSQS      [native_decide ax]                      NOT kernel
+  A03_disjoint    [propext, native_decide ax]             NOT kernel
+  A03_remainder   [native_decide ax]                      NOT kernel
+  A04_k5          [propext, native_decide ax]             NOT kernel
+  A04_pigeonhole  [propext, Classical.choice, Quot.sound] CLEAN
+  A05_repair      [propext, Quot.sound]                   CLEAN
+  A05_exact       [propext, Quot.sound]                   CLEAN
+  A01_jb          [native_decide ax]                      NOT kernel
+  A01_choose      [native_decide ax]                      NOT kernel
+  A01_ratio       [native_decide ax]                      NOT kernel
+
+FINDING 0 - "KERNEL-CHECKS" IS THE WRONG WORD FOR MOST OF THIS PACKET.
+  Every shot that carries real #835 content (01,02,03,04,07) proves it with `native_decide`.
+  That does NOT run the kernel. It compiles the decision procedure to C, runs the binary,
+  and admits the answer through a generated axiom. It trusts the Lean compiler and your CPU.
+  Shots 05 and the 04 pigeonhole lemma are the only ORIGINAL claims that are kernel-clean,
+  and they are the arithmetically trivial ones (omega over small naturals).
+
+FINDING 1 - THE 17 BOUND IS NOT PROVED. THIS IS THE BIG ONE.
+  Shot 01s headline `17 <= chi(J(32,16))` and shot 10s entire route both route through:
+      Erdos835.div_johnsonBound_le_chromaticNum_johnson  -> [propext, sorryAx, ...]
+      Erdos835.indepNum_johnson_le_johnsonBound          -> [propext, sorryAx, ...]
+      Erdos835.property_iff_chromaticNumber              -> [propext, sorryAx, ...]
+  All three depend on sorryAx. `indepNum_johnson_le_johnsonBound` is literally `:= sorry`
+  upstream. So the "existing machinery reaches 17" premise is an UNPROVED premise in the
+  live repo. We repaired shot 01s arithmetic and it then COMPILES GREEN (R01) - and its
+  footprint still contains sorryAx. A green exit here would have been a facade.
+  The packet contract "no sorry in the ten attempt files" is true and irrelevant: the sorry
+  is one import away, in the dependency closure.
+
+FINDING 2 - WHY SHOTS 01 AND 10 ACTUALLY FAILED (a tactic gap, not mathematics).
+  `norm_num [johnsonBound]` reduced the bound to 35357670 but left the NNRat ceiling
+  quotient unevaluated:
+      h : ceil(choose 32 16 / 35357670) <= chi(J(32,16))
+      expected : 17 <= chi(J(32,16))
+  Bridging it explicitly closes the gap. Both constants are correct.
+
+FINDING 3 - SHOT 10 IS NOT MERELY HARD. IT IS UNSOUND. (kernel-clean result)
+  Shot 10 assumes Property 16, i.e. chi = k+1 = 17, then tries to derive 18 <= chi.
+  Under its own assumption that goal is FALSE. Lean showed the residual goal literally as
+      hbound : 17 <= 16 + 1
+      |- 18 <= 16 + 1
+  We proved this properly in Repairs/R10b_DirectK16Verdict.lean:
+      shot10_route_is_unsound : G.chromaticNumber = 17 -> NOT (18 <= G.chromaticNumber)
+      footprint [propext, Classical.choice, Quot.sound]  <- CLEAN, no sorry, no native
+  No tactic portfolio could ever have made shot 10 green. It is not a frontier probe;
+  it is a strategy that cannot work. Any refutation of Property 16 needs strictly more
+  than the Johnson bound.
+
+FINDING 4 - TWO CLAIMS UPGRADED TO ZERO AXIOMS (stronger than the packet shipped).
+  Retrying shot 02s list arithmetic with plain `decide` (kernel evaluation) instead of
+  `native_decide`:
+      K02_fiber_kernel : does not depend on any axioms
+      K02_diff_kernel  : does not depend on any axioms
+  The replacement-fiber identity and the alternating-difference identity are now genuine
+  axiom-free kernel theorems.
+  Also recovered kernel-clean by norm_num (no native_decide, no sorry):
+      johnsonBound 32 4 16 = 35357670        [propext, Classical.choice, Quot.sound]
+      Nat.choose 32 16     = 601080390       [propext]
+  The 601080390 / 17 = 35357670 knife edge is therefore REAL and kernel-certified.
+  What is NOT certified is that this bound implies anything about chi (see FINDING 1).
+
+FINDING 5 - SHOT 04s K5 CHECK RESISTS THE KERNEL.
+  `knownK5sValid = true` by plain `decide` hit a deterministic whnf timeout at 200000
+  heartbeats. Reported as NOT ATTEMPTED-TO-COMPLETION, never as passed. Retry with the
+  heartbeat limit lifted is recorded in logs/R12_K5KernelRetry.log.
+
+============================================================================
+THE FRONTIER GOALS  -  verbatim elaborator output, unsummarised
+============================================================================
+
+--- SHOT 06 (one-coordinate rigidity) : aesop exhausted, goal intact ---
+06_OneCoordinateRigidityProbe.lean:20:2: warning: aesop: failed to prove the goal after
+exhaustive search.
+06_OneCoordinateRigidityProbe.lean:17:22: error: unsolved goals
+i : Fin 15
+T : SQS
+left : isSQS20 T = true
+right : forall (j : Fin 15), NOT j = i -> forall x in T, x NOT-IN P15.get! (up j)
+|- T = P15.get! (up i)
+
+  READ: the statement survived elaboration intact - the rigidity theorem is well-formed and
+  aesop simply has no route. This is a genuine open formalization target, not a syntax
+  casualty. Nothing here is decidable by the listed hypotheses alone: `right` constrains T
+  only by disjointness from fourteen systems, and no finiteness of the ambient block set is
+  in scope, so the missing ingredient is the counting argument that 570 remaining blocks
+  admit exactly one SQS(20) completion.
+
+--- SHOT 08 (Property 16 -> large set of SQS(20)) : maxRecDepth first, then clean goal ---
+FIRST FIRE : 08:21:2: error: maximum recursion depth has been reached
+AFTER RAISING maxRecDepth ONLY (no proof step changed):
+R08:23:2: warning: aesop: failed to prove the goal after exhaustive search.
+R08:15:77: error: unsolved goals
+c : { s // s.card = 16 } -> Fin (16 + 1)
+hc : forall (A : Finset (Fin 32)), A.card = 17 -> Finset.image c {x | (up x) SUBSET-OF A} = Finset.univ
+|- exists c, forall (a : Finset (Fin 20)), a.card = 3 -> Finset.image c {x | a SUBSET-OF (up x)} = Finset.univ
+
+--- SHOT 09 (Property 16 -> large set of S(4,5,21)) : same shape, different arity ---
+FIRST FIRE : 09:18:2: error: maximum recursion depth has been reached
+AFTER RAISING maxRecDepth ONLY:
+R09:20:2: warning: aesop: failed to prove the goal after exhaustive search.
+R09:13:75: error: unsolved goals
+c : { s // s.card = 16 } -> Fin (16 + 1)
+hc : forall (A : Finset (Fin 32)), A.card = 17 -> Finset.image c {x | (up x) SUBSET-OF A} = Finset.univ
+|- exists c, forall (a : Finset (Fin 21)), a.card = 4 -> Finset.image c {x | a SUBSET-OF (up x)} = Finset.univ
+
+  READ - THIS IS THE MOST USEFUL BYTE IN THE RUN. Both bridges reduce to the SAME missing
+  lemma, and the goal makes the gap explicit: THE CONTAINMENT DIRECTION IS REVERSED.
+    hypothesis : (up x) SUBSET-OF A   - the 16-set sits INSIDE the 17-set
+    goal       : a SUBSET-OF (up x)   - the 3-set (resp 4-set) sits INSIDE the block
+  So this is not a missing Finset API call and no amount of aesop will close it. What is
+  missing is the actual mathematical content of the reduction: an embedding Fin 20 -> Fin 32
+  (resp Fin 21 -> Fin 32) fixing 12 (resp 11) points, plus the dual reindexing that turns
+  "colours seen among the 16-subsets contained in a 17-set" into "colours seen among the
+  4-subsets containing a 3-set". Neither embedding nor the induced colour transport exists
+  anywhere in scope; the probe cannot succeed until they are constructed.
+  That both shot 08 and shot 09 land on the identical reversal is the signal: it is ONE
+  bridge lemma, parameterised, not two independent descents.
+
+--- SHOT 10 (direct NOT Property 16) : route proved unsound, see FINDING 3 ---
+10:18:4: error: Type mismatch
+  hj has type   (up)ceil((up)(Nat.choose 32 16) / 35357670) <= chi(J(32, 16))
+  but is expected to have type   17 <= chi(J(32, 16))
+10:21:20: warning: aesop: failed to prove the goal after exhaustive search.
+10:20:42: error: unsolved goals
+hchi : chi(J(32, 16)) = 16 + 1
+hj : (up)ceil((up)(Nat.choose 32 16) / (up)(Erdos835.johnsonBound 32 4 16)) <= 16 + 1
+hbound : 17 <= 16 + 1
+|- 18 <= 16 + 1
+10:22:2: error: omega could not prove the goal:
+No usable constraints found.
+
+============================================================================
+BOTTOM LINE
+============================================================================
+* Nothing unexpectedly went green. Shots 08, 09, 10 did not close. We did not have to
+  inspect a corpse.
+* The one place a green light WOULD have been misleading is shot 01, and it was caught by
+  the axiom footprint rather than the exit code: repaired, it compiles - resting on sorryAx.
+* The strongest new fact from this run is negative and kernel-clean: shot 10s strategy is
+  unsound under its own hypothesis, so that arm should be retired rather than mutated.
+* The strongest actionable fact is the reversed containment shared by shots 08 and 09.
+  That is one parameterised bridge lemma, and it is where mutation pays.
+* Erdos #835 remains open. Nothing in this run moves the k=16 case.
+
+============================================================================
+AUDIT PASS (second model, 2026-08-19) - corrections to the above, left visible
+============================================================================
+
+CORRECTION TO FINDING 3 - "UNSOUND / RETIRE THE ARM" IS THE WRONG VERDICT.
+  What R10b proved is real but narrower than claimed. The theorem
+      chi = 17 -> NOT (18 <= chi)
+  shows the residual subgoal cannot be derived FROM THE LISTED HYPOTHESES - i.e. no
+  propositional or arithmetic automation over the context (omega/aesop) can ever close
+  shot 10, and aesop displaying `18 <= 16+1` is its own simp of hchi into the goal, not
+  evidence the abstract target is false. But shot 10s `have : 18 <= chi` is stated against
+  the REAL chromatic number: `exact?` was hunting an UNCONDITIONAL strict bound in the
+  library, and contradiction-via-strict-bound is exactly the shape ANY refutation of
+  Property 16 must take. The arm is not unsound; it is STARVED. It needs one imported
+  theorem - `NOT Colorable 17` for J(32,16), i.e. an unconditional 18-bound - which is
+  precisely what the packets SQS obstruction material (shots 03/04) is trying to build.
+  Do not retire the arm. Feed it.
+
+SHARPENED COMPOSITE OF FINDINGS 1+3 - THE REAL BLOCKER ON SHOT 10.
+  Shot 10s FIRST tactic line routes through property_iff_chromaticNumber, which is
+  `by sorry` upstream. So even WITH the 18-bound in hand, shot 10 cannot produce a
+  kernel-clean refutation of Property 16 on todays upstream: the chi<->Property bridge
+  itself is unproved. Every chi-side attack is dead-ended at the same door.
+
+FINDING 1 UPGRADED - CONFIRMED ON LIVE UPSTREAM, NOT JUST OUR MIRROR.
+  Fetched google-deepmind/formal-conjectures main HEAD on 2026-08-19:
+    indepNum_johnson_le_johnsonBound   := sorry          (verbatim)
+    property_iff_chromaticNumber       := by sorry       (verbatim)
+  The vendored-mirror caveat in FINDING 1 is closed. The sorries are live today.
+
+FINDING 5 CLOSED - K5 KERNEL DECIDE: INFEASIBLE AT THIS BUDGET.
+  R12 (decide, maxHeartbeats 0) was killed by its 1500s wall-clock timeout, EXIT=124,
+  no verdict. Kernel whnf on 570-block list membership is orders slower than native code;
+  a real attempt needs hours or a reflection-based verifier, not 25 minutes. Recorded as
+  NOT DECIDED. knownK5sValid remains native_decide-only.
+
+CORRECTED MUTATION PRIORITY (replaces the BOTTOM LINE ordering)
+  1. property_iff_chromaticNumber  - the chi<->Property bridge. Until this is proved,
+     NOTHING chi-side (shots 01, 10, the Johnson bound, any future strict bound) can
+     transfer to Property 16 kernel-clean. One direction (Property -> coloring -> chi <= k+1)
+     looks like the easy half. This is the gate in front of every other gate.
+  2. indepNum_johnson_le_johnsonBound - the sorry under the 17 floor. Standard
+     double-counting; upstreams own proof sketch stops at `sorry`.
+  3. The ONE parameterised bridge lemma behind shots 08+09 (reversed containment:
+     embedding Fin 20/21 into Fin 32 fixing 12/11 points + colour transport). Two shots,
+     one lemma.
+  4. The unconditional 18-bound itself (NOT Colorable 17) - the actual mathematics of
+     the K5/SQS obstruction. Shot 10 consumes this the day items 1 and 4 both exist.
+
+AUDIT VERDICT ON THE RUN ITSELF
+  - Reusing the prebuilt WSL mathlib instead of a 5 GB 4.27.0 download: right call
+    (forced by operator interrupt; should have been the FIRST call - the build was
+    already documented in session memory).
+  - The three FC drift patches: statements untouched, kernel re-checked. Sound.
+  - List.get! shim + maxRecDepth raises: semantics-preserving. Sound.
+  - R11 zero-axiom upgrades: real, strictly stronger than shipped. Keep.
+  - R12 launch under a 25-min cap with unbounded heartbeats: misjudged budget,
+    predictable EXIT=124.
+  - FINDING 3 as originally shipped: overclaimed. Corrected above, correction left
+    visible per house rule (never silently rewrite a shipped claim).

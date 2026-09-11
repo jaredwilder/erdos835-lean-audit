@@ -1,0 +1,24 @@
+warning: mathlib: repository '/root/erdosfire-bench/proofs/.lake/packages/mathlib' has local changes
+warning: plausible: repository '/root/erdosfire-bench/proofs/.lake/packages/plausible' has local changes
+warning: LeanSearchClient: repository '/root/erdosfire-bench/proofs/.lake/packages/LeanSearchClient' has local changes
+warning: importGraph: repository '/root/erdosfire-bench/proofs/.lake/packages/importGraph' has local changes
+warning: proofwidgets: repository '/root/erdosfire-bench/proofs/.lake/packages/proofwidgets' has local changes
+warning: aesop: repository '/root/erdosfire-bench/proofs/.lake/packages/aesop' has local changes
+warning: Qq: repository '/root/erdosfire-bench/proofs/.lake/packages/Qq' has local changes
+warning: batteries: repository '/root/erdosfire-bench/proofs/.lake/packages/batteries' has local changes
+warning: Cli: repository '/root/erdosfire-bench/proofs/.lake/packages/Cli' has local changes
+'JSpace835Audit.A02_fiber' depends on axioms: [A02_fiber._native.native_decide.ax_1_1]
+'JSpace835Audit.A02_mod17' depends on axioms: [propext, Quot.sound, A02_mod17._native.native_decide.ax_1_1]
+'JSpace835Audit.A03_allSQS' depends on axioms: [A03_allSQS._native.native_decide.ax_1_1]
+'JSpace835Audit.A03_disjoint' depends on axioms: [propext, A03_disjoint._native.native_decide.ax_1_1]
+'JSpace835Audit.A03_remainder' depends on axioms: [A03_remainder._native.native_decide.ax_1_1]
+'JSpace835Audit.A04_k5' depends on axioms: [propext, A04_k5._native.native_decide.ax_1_1]
+'JSpace835Audit.A04_pigeonhole' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSpace835Audit.A05_repair' depends on axioms: [propext, Quot.sound]
+'JSpace835Audit.A05_exact' depends on axioms: [propext, Quot.sound]
+'JSpace835Audit.A01_jb' depends on axioms: [A01_jb._native.native_decide.ax_1_1]
+'JSpace835Audit.A01_choose' depends on axioms: [A01_choose._native.native_decide.ax_1_1]
+'JSpace835Audit.A01_ratio' depends on axioms: [A01_ratio._native.native_decide.ax_1_1]
+'Erdos835.div_johnsonBound_le_chromaticNum_johnson' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Erdos835.indepNum_johnson_le_johnsonBound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'Erdos835.property_iff_chromaticNumber' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

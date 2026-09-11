@@ -1,0 +1,14 @@
+warning: mathlib: repository '/root/erdosfire-bench/proofs/.lake/packages/mathlib' has local changes
+warning: plausible: repository '/root/erdosfire-bench/proofs/.lake/packages/plausible' has local changes
+warning: LeanSearchClient: repository '/root/erdosfire-bench/proofs/.lake/packages/LeanSearchClient' has local changes
+warning: importGraph: repository '/root/erdosfire-bench/proofs/.lake/packages/importGraph' has local changes
+warning: proofwidgets: repository '/root/erdosfire-bench/proofs/.lake/packages/proofwidgets' has local changes
+warning: aesop: repository '/root/erdosfire-bench/proofs/.lake/packages/aesop' has local changes
+warning: Qq: repository '/root/erdosfire-bench/proofs/.lake/packages/Qq' has local changes
+warning: batteries: repository '/root/erdosfire-bench/proofs/.lake/packages/batteries' has local changes
+warning: Cli: repository '/root/erdosfire-bench/proofs/.lake/packages/Cli' has local changes
+'JSpace835R10b.jb32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSpace835R10b.ch32' depends on axioms: [propext]
+'JSpace835R10b.johnson_gives_exactly_17' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'JSpace835R10b.shot10_route_is_unsound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'JSpace835R10b.seventeen_never_gives_eighteen' depends on axioms: [propext, Quot.sound]

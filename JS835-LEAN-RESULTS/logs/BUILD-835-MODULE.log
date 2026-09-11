@@ -1,0 +1,24 @@
+warning: mathlib: repository '/root/erdosfire-bench/proofs/.lake/packages/mathlib' has local changes
+warning: plausible: repository '/root/erdosfire-bench/proofs/.lake/packages/plausible' has local changes
+warning: LeanSearchClient: repository '/root/erdosfire-bench/proofs/.lake/packages/LeanSearchClient' has local changes
+warning: importGraph: repository '/root/erdosfire-bench/proofs/.lake/packages/importGraph' has local changes
+warning: proofwidgets: repository '/root/erdosfire-bench/proofs/.lake/packages/proofwidgets' has local changes
+warning: aesop: repository '/root/erdosfire-bench/proofs/.lake/packages/aesop' has local changes
+warning: Qq: repository '/root/erdosfire-bench/proofs/.lake/packages/Qq' has local changes
+warning: batteries: repository '/root/erdosfire-bench/proofs/.lake/packages/batteries' has local changes
+warning: Cli: repository '/root/erdosfire-bench/proofs/.lake/packages/Cli' has local changes
+✔ [8501/8503] Built FormalConjecturesForMathlib.Combinatorics.SimpleGraph.Coloring (7.1s)
+✔ [8502/8503] Built FormalConjecturesShim (53s)
+⚠ [8503/8503] Built FormalConjectures.ErdosProblems.«835» (28s)
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:48:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:52:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:63:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:74:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:84:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:98:6: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:113:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:129:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:138:8: declaration uses `sorry`
+warning: js835fc/FormalConjectures/ErdosProblems/835.lean:158:8: declaration uses `sorry`
+Build completed successfully (8503 jobs).
+EXIT=0

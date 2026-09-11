@@ -1,0 +1,12 @@
+warning: mathlib: repository '/root/erdosfire-bench/proofs/.lake/packages/mathlib' has local changes
+warning: plausible: repository '/root/erdosfire-bench/proofs/.lake/packages/plausible' has local changes
+warning: LeanSearchClient: repository '/root/erdosfire-bench/proofs/.lake/packages/LeanSearchClient' has local changes
+warning: importGraph: repository '/root/erdosfire-bench/proofs/.lake/packages/importGraph' has local changes
+warning: proofwidgets: repository '/root/erdosfire-bench/proofs/.lake/packages/proofwidgets' has local changes
+warning: aesop: repository '/root/erdosfire-bench/proofs/.lake/packages/aesop' has local changes
+warning: Qq: repository '/root/erdosfire-bench/proofs/.lake/packages/Qq' has local changes
+warning: batteries: repository '/root/erdosfire-bench/proofs/.lake/packages/batteries' has local changes
+warning: Cli: repository '/root/erdosfire-bench/proofs/.lake/packages/Cli' has local changes
+js835/JSpace835/Attempts/08_Property16_to_SQS20_Probe.lean:21:2: error: maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
