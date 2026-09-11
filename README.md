@@ -1,120 +1,119 @@
-# erdos835-lean-audit
+# Erdős 835 Lean axiom audit
 
-**A ten-shot Lean run at Erdős 835, and the axiom audit that found the headline bound rests on a
-`sorry` one import away.**
+A formal-methods audit of ten Lean proof attempts around Erdős 835. The central finding is that the apparent `17 ≤ χ(J(32,16))` proof depends on an upstream `sorry`, while several smaller arithmetic statements can be recovered with clean axiom footprints.
 
 Author: Jared Wilder. Run date 2026-08-19. First public timestamp: 2026-09-11.
 
-Erdős 835 asks about the chromatic number of the Johnson graph J(32,16). Ten proof attempts were
-run locally against Lean 4.31.0-rc1 and a vendored copy of DeepMind's `formal-conjectures` tree.
-**Five passed, five failed.** Then every green claim was audited, and the pass rate stopped being
-the interesting number.
+Erdős 835 concerns the chromatic number of the Johnson graph `J(32,16)`. Ten local proof attempts were tested against Lean 4.31.0-rc1 and a vendored copy of DeepMind's `formal-conjectures` tree. Five compiled and five did not. The axiom audit then examined what the successful files actually depended on.
 
----
+## 1. Anonymous `example`s hide axiom footprints
 
-## Finding 0: "kernel-checked" is the wrong word for most of this packet
+The original files stated many claims as anonymous `example`s. `#print axioms` cannot inspect an anonymous example directly, so compilation alone did not expose their dependency footprints.
 
-The packet states its claims as anonymous `example`s. **`#print axioms` cannot inspect an
-`example`.** So a packet full of `example`s can compile green and tell you nothing at all about its
-axiom footprint.
+`Audit/AxiomAudit.lean` restates every successful claim as a named theorem with the same proposition and proof, then prints its axioms.
 
-Every green claim was therefore restated as a **named theorem with the same statement and the same
-proof** (`Audit/AxiomAudit.lean`) and its footprint printed. Result:
-
-| claim | footprint | verdict |
+| claim | footprint | status |
 |---|---|---|
-| A02_fiber, A03_allSQS, A03_remainder, A01_jb, A01_choose, A01_ratio | `[native_decide ax]` | **not kernel** |
-| A02_mod17, A03_disjoint, A04_k5 | `[..., native_decide ax]` | **not kernel** |
-| A04_pigeonhole | `[propext, Classical.choice, Quot.sound]` | clean |
-| A05_repair, A05_exact | `[propext, Quot.sound]` | clean |
+| `A02_fiber`, `A03_allSQS`, `A03_remainder`, `A01_jb`, `A01_choose`, `A01_ratio` | `[native_decide ax]` | compiler-evaluated finite check |
+| `A02_mod17`, `A03_disjoint`, `A04_k5` | `[..., native_decide ax]` | compiler-evaluated finite check |
+| `A04_pigeonhole` | `[propext, Classical.choice, Quot.sound]` | clean classical footprint |
+| `A05_repair`, `A05_exact` | `[propext, Quot.sound]` | clean footprint |
 
-**Nine of twelve are not kernel proofs.** `native_decide` does not run the kernel — it compiles the
-decision procedure to C, runs the binary, and admits the answer through a generated axiom. It trusts
-the Lean compiler and the CPU. The three clean ones are the arithmetically trivial claims.
+Nine of the twelve named claims use `native_decide`. That is a legitimate finite verification method, but it trusts compiled evaluation rather than reducing the result entirely through the Lean kernel.
 
-## Finding 1: the 17 bound is not proved
+## 2. The proposed 17 lower bound inherits `sorryAx`
 
-Shot 01's headline `17 ≤ χ(J(32,16))` and shot 10's entire route both pass through three lemmas in
-the vendored tree whose footprints contain **`sorryAx`**:
+The route to
 
-```
-Erdos835.div_johnsonBound_le_chromaticNum_johnson  -> [propext, sorryAx, ...]
-Erdos835.indepNum_johnson_le_johnsonBound          -> [propext, sorryAx, ...]
-Erdos835.property_iff_chromaticNumber              -> [propext, sorryAx, ...]
+```text
+17 <= χ(J(32,16))
 ```
 
-`indepNum_johnson_le_johnsonBound` is **literally `:= sorry`** upstream. The premise that existing
-machinery reaches 17 is an unproved premise.
+uses three lemmas from the vendored source tree whose axiom footprints contain `sorryAx`:
 
-Shot 01's arithmetic was repaired and it then **compiles green** — and its footprint still contains
-`sorryAx`. A green exit here would have been a facade.
-
-The packet's own contract, *"no sorry in the ten attempt files"*, is true and irrelevant. **The
-sorry is one import away, in the dependency closure.** That is the general lesson and it is why this
-repository exists.
-
-## Finding 3: shot 10 is not hard, it is unsound — and that is now a theorem
-
-Shot 10 assumes Property 16, i.e. χ = k+1 = 17, and then tries to derive 18 ≤ χ. Under its own
-assumption the goal is false. Lean showed the residual goal literally as
-
-```
-hbound : 17 <= 16 + 1
-|- 18 <= 16 + 1
+```text
+Erdos835.div_johnsonBound_le_chromaticNum_johnson
+Erdos835.indepNum_johnson_le_johnsonBound
+Erdos835.property_iff_chromaticNumber
 ```
 
-`Repairs/R10b_DirectK16Verdict.lean` proves it properly:
+In particular, `indepNum_johnson_le_johnsonBound` is defined upstream with `:= sorry`.
+
+So the downstream Lean file does **not** constitute a completed proof of the lower bound. Repairing local arithmetic makes the file compile, but it does not remove the unproved imported premise.
+
+The general lesson is straightforward: the axiom footprint must be inspected through the full dependency closure, not only by searching the local file for the literal word `sorry`.
+
+## 3. One proposed route is inconsistent with its own assumption
+
+A later attempt assumes
+
+```text
+χ(J(32,16)) = 17
+```
+
+and then tries to derive `18 <= χ(J(32,16))`. Under the assumption, that target is false.
+
+`Repairs/R10b_DirectK16Verdict.lean` states the correct result:
 
 ```lean
 shot10_route_is_unsound : G.chromaticNumber = 17 → ¬ (18 ≤ G.chromaticNumber)
 ```
 
-footprint `[propext, Classical.choice, Quot.sound]` — **clean, no sorry, no native_decide.**
+with footprint
 
-No tactic portfolio could ever have made shot 10 green. Any refutation of Property 16 needs strictly
-more than the Johnson bound.
-
-## Finding 4: two claims upgraded to zero axioms, and a real knife edge
-
-Retrying shot 02's list arithmetic with plain `decide` (kernel evaluation) instead of
-`native_decide`:
-
-```
-K02_fiber_kernel : does not depend on any axioms
-K02_diff_kernel  : does not depend on any axioms
+```text
+[propext, Classical.choice, Quot.sound].
 ```
 
-And recovered kernel-clean by `norm_num`:
+Thus the issue is mathematical inconsistency in the proposed route, not tactic choice.
 
+## 4. Clean finite arithmetic recovered
+
+Replacing `native_decide` with kernel `decide` recovers two finite list statements with zero axioms:
+
+```text
+K02_fiber_kernel : no axioms
+K02_diff_kernel  : no axioms
 ```
-johnsonBound 32 4 16 = 35357670      [propext, Classical.choice, Quot.sound]
-Nat.choose 32 16     = 601080390     [propext]
+
+Two numerical identities are also recovered cleanly:
+
+```text
+johnsonBound 32 4 16 = 35357670
+Nat.choose 32 16     = 601080390
 ```
 
-**The 601080390 / 17 = 35357670 knife edge is real and kernel-certified.** What is *not* certified is
-that this bound implies anything about χ — see Finding 1.
+The equality
 
-## What was fixed to make it run, recorded rather than hidden
+```text
+601080390 / 17 = 35357670
+```
 
-Three genuine version-drift breaks in the vendored tree, all upstream changes rather than packet
-faults: `Mathlib.Combinatorics.SimpleGraph.Coloring` was split and `chromaticNumber` moved;
-`Irreflexive` became a class so a `simp +contextual` left metavariables; and a `simpa` no longer
-normalised `bipartiteBelow` membership. Each was replaced with an explicit proof of the same fact.
+is therefore formally secure. What remains unproved is the imported theorem connecting that numerical Johnson bound to the desired chromatic-number inequality.
 
-Two packet defects were also worked around: a 4,275-block literal blew `maxRecDepth`, and
-`List.get!` was removed from core Lean after v4.29 and had to be restored with its exact original
-semantics.
+## 5. Toolchain and compatibility notes
 
-**The requested toolchain was not used.** Lean 4.27.0 would have meant a ~5 GB Mathlib download and
-the run used the Mathlib already on the machine. **These are 4.31.0-rc1 results, not 4.27.0
-results**, and every claim above should be read with that attached.
+The vendored source required three compatibility repairs under Lean 4.31.0-rc1:
 
-## What this is not
+- `Mathlib.Combinatorics.SimpleGraph.Coloring` had been split and `chromaticNumber` moved;
+- `Irreflexive` had become a class, changing simplification behavior;
+- a `simpa` no longer normalized `bipartiteBelow` membership automatically.
 
-This does not resolve Erdős 835, does not bound χ(J(32,16)), and does not claim the vendored
-corpus is wrong — a `sorry` in a research formalization corpus is an ordinary, honest placeholder.
-The finding is narrower and more useful: **a downstream proof that imports one inherits it, and an
-anonymous `example` will never tell you.**
+Two local implementation issues were also repaired: a 4,275-block literal exceeded `maxRecDepth`, and historical use of `List.get!` required restoration of the old semantics.
+
+The requested Lean 4.27.0 environment was not used; these audit results are specifically for **Lean 4.31.0-rc1** with the available Mathlib environment.
+
+## Mathematical conclusion
+
+This repository does not supply a new bound for `χ(J(32,16))`. Its contribution is the formal audit itself:
+
+- the proposed 17-bound derivation inherits an upstream `sorryAx`;
+- nine smaller finite claims use `native_decide` rather than pure kernel reduction;
+- three smaller claims have clean classical footprints;
+- two finite claims can be strengthened to zero-axiom kernel evaluation;
+- one proposed route is formally refuted under its own assumption.
+
+That is a concrete dependency and proof-status result for the Erdős 835 formalization lane.
 
 ## License
 
