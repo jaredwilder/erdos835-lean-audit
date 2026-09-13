@@ -52,3 +52,13 @@ The natural `AGL(1,5) x S4` coordinate actions were tested against the indexed 1
 General Steiner-trade theory is classical. The source's targeted search did not locate the exact one-coordinate rigidity theorem or the complete `(30,30,225)` versus `(285)` profile for this explicit 15-pack. Priority is not claimed without specialist design-theory review.
 
 Original intake copy: `jaredwilder/unpublished-math-papers/erdos835-sqs20/P15-RIGIDITY-AND-TRADES.md`.
+
+## Recovered computational authority
+
+The exact pack and original verifiers are now public in
+[p15-certificate/](p15-certificate/). The
+[source manifest](P15-SOURCE-MANIFEST.json) preserves ZIP provenance and file
+hashes. The [fresh replay](../verification/P15-REPLAY-2026-09-13.json) checks
+all 15 rigidity cases, all 105 pair profiles, the incidence identity and an
+independent reconstruction of the four residual `K5` obstructions.
+Run `python verification/replay_p15.py` from the repository root.

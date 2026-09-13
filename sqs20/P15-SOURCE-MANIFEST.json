@@ -1,0 +1,181 @@
+{
+  "source_archive": "JSPACE-v0.7-ERDOS835-40R.zip",
+  "source_archive_sha256": "df8612f0c847fb88683f0bd7f5c22570cd1c2b388161fe72e291778e5e3a3dae",
+  "files": [
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/05_PHYSICAL_VS_GAUGE_TRADES.md",
+      "destination": "sqs20/p15-certificate/05_PHYSICAL_VS_GAUGE_TRADES.md",
+      "bytes": 1278,
+      "sha256": "cd7fd7e7d76e0b6211864f549e8ec42e1ba75b976d824252d492a25cbb11a6bc",
+      "git_blob": "5ceb1c88a5dfc83175b537d6dd65e5d360496552"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/04_SPECTRAL_TRADE_EQUIVALENCE.md",
+      "destination": "sqs20/p15-certificate/04_SPECTRAL_TRADE_EQUIVALENCE.md",
+      "bytes": 1240,
+      "sha256": "c787ddb243d80ef1d4415ae848ce22a03e1118ea83016453e15ddd01a055357a",
+      "git_blob": "3bb015e1de915d8c7c037cc475e1642237c7c99f"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/03_PAIR_TRADE_GRAPH.md",
+      "destination": "sqs20/p15-certificate/03_PAIR_TRADE_GRAPH.md",
+      "bytes": 1532,
+      "sha256": "5eaa383bdb6ecaab0ba8de808d1e07c95c8ecb74fe99a24b50cc00f656a5b518",
+      "git_blob": "b957934a0685a0067c03f68c68ad7f6d37a77591"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/replay.log",
+      "destination": "sqs20/p15-certificate/replay.log",
+      "bytes": 11179,
+      "sha256": "70ffa798a2318be3cd6d6ec6b805272d0dfdb2e30b25bdddca716711f430b0ad",
+      "git_blob": "96d126a2a39c02acb11180854284698d3373d96b"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/data/eh15_remainder_certificate.json",
+      "destination": "sqs20/p15-certificate/data/eh15_remainder_certificate.json",
+      "bytes": 30003,
+      "sha256": "b2b276f1db9c0cb1ba1ff65b835a2d0a8c748a513731e09ac951dd3f1bc7c6b3",
+      "git_blob": "f2090a6937343d2ca919c47b24a94517e2696e7e"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/data/eh15_sqs20.json",
+      "destination": "sqs20/p15-certificate/data/eh15_sqs20.json",
+      "bytes": 265332,
+      "sha256": "ff0785a930f5c2df406f781881d0586007c596214f5a789e9990a7a30f3ea0fb",
+      "git_blob": "806cf91d527e6200944db37493c31ce1589304b0"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/results/PAIR_TRADE_PROFILES.json",
+      "destination": "sqs20/p15-certificate/results/PAIR_TRADE_PROFILES.json",
+      "bytes": 5462,
+      "sha256": "c96f62a057b12d966694760ff32af93aca5987cf895ad624d6fdba3b2ca5a15d",
+      "git_blob": "d3a3fd4acfb4cca46fc0a1c6e0289fcd6a7b18b8"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/results/ONE_COORDINATE_RIGIDITY.json",
+      "destination": "sqs20/p15-certificate/results/ONE_COORDINATE_RIGIDITY.json",
+      "bytes": 4942,
+      "sha256": "a6395c459b131978a42e605f06b3d719a38c9a9cc7b89b434fd35331e709a089",
+      "git_blob": "855a05a75ce70777ddbe07aa7ae499a744bd870b"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/results/SPECTRAL_TRADE_IDENTITY.json",
+      "destination": "sqs20/p15-certificate/results/SPECTRAL_TRADE_IDENTITY.json",
+      "bytes": 388,
+      "sha256": "51e63a2e32ef766dcc28a3b5de9ea34ed3cf08a2ce3cdeb8bd6f9e6bf7b261c5",
+      "git_blob": "9b2f6101bf192e68a9f6e3a962b474ec9ffcb84c"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/results/REPLAY.log",
+      "destination": "sqs20/p15-certificate/results/REPLAY.log",
+      "bytes": 11179,
+      "sha256": "70ffa798a2318be3cd6d6ec6b805272d0dfdb2e30b25bdddca716711f430b0ad",
+      "git_blob": "96d126a2a39c02acb11180854284698d3373d96b"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/results/ROUND_31_40_SUMMARY.json",
+      "destination": "sqs20/p15-certificate/results/ROUND_31_40_SUMMARY.json",
+      "bytes": 890,
+      "sha256": "f7fc1837f0d6b5043c98ae34aacfd99deac410005dcbbec85d0c56ae01de8f06",
+      "git_blob": "3a85bb00b27518556b6dda7822d226e95c988168"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/02_ONE_COORDINATE_RIGIDITY.md",
+      "destination": "sqs20/p15-certificate/02_ONE_COORDINATE_RIGIDITY.md",
+      "bytes": 1855,
+      "sha256": "7da32bdec6e16531dce8c3b0272f76cfe7655ba79f14f24e1171ec2493895609",
+      "git_blob": "d1df2ad5e27d1564ad758877cbe8c1132ef2f820"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/lean/FORMALIZATION_PLAN.md",
+      "destination": "sqs20/p15-certificate/lean/FORMALIZATION_PLAN.md",
+      "bytes": 1934,
+      "sha256": "28a31dde4b892f5c304fe3d8849a54819c2cd3e674e47c03c0b60ba0ab42985e",
+      "git_blob": "f8dddf70b0535885800cb1e326d2cba2f8e33d02"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/README.md",
+      "destination": "sqs20/p15-certificate/README.md",
+      "bytes": 1097,
+      "sha256": "71ecbfc8167fc6650bed88e9ab8846674a9249f124a69053dcff63a21b32ae4d",
+      "git_blob": "611ed74c934275db9bc169a1047e7840522425ed"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/src/verify_one_coordinate_rigidity.py",
+      "destination": "sqs20/p15-certificate/src/verify_one_coordinate_rigidity.py",
+      "bytes": 3319,
+      "sha256": "e7bb0a7c7f37275333f24a3f60702a6ae52cec3938438cacfc725aa82645342d",
+      "git_blob": "5d1a51b6d8e937dd3f0bde434a0d630f9ddaec1e"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/src/replay_all.py",
+      "destination": "sqs20/p15-certificate/src/replay_all.py",
+      "bytes": 371,
+      "sha256": "ee52d82dcb08e12e2e837d7a246e394c2c4cfbfaa07cacd6011892fdef814f4c",
+      "git_blob": "b69a014368fc3096966e1dfdf63287cb584047e0"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/src/verify_pack.py",
+      "destination": "sqs20/p15-certificate/src/verify_pack.py",
+      "bytes": 1135,
+      "sha256": "9a86eb99255fb0d3f45aaa92efd62eddb027dc47dccff88ca1f3d1dd55437dbb",
+      "git_blob": "71b0fb1c749235a8077a33c3e14aa2410fe9eb27"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/src/verify_pair_trade_profiles.py",
+      "destination": "sqs20/p15-certificate/src/verify_pair_trade_profiles.py",
+      "bytes": 2054,
+      "sha256": "74f84acee61bc9e768581602559c638548609193127d45606a6cf91f9b671218",
+      "git_blob": "9595c586ae567286e58e765712af80c720acda1b"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/src/verify_spectral_trade_identity.py",
+      "destination": "sqs20/p15-certificate/src/verify_spectral_trade_identity.py",
+      "bytes": 1725,
+      "sha256": "c50da20130682d328f60c830e8d8a4e60af7b22ac7475b67084981946a0e631d",
+      "git_blob": "02f739454a0083eafa3592420b2fb7f39a13657d"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/07_CLAIM_BOUNDARY.md",
+      "destination": "sqs20/p15-certificate/07_CLAIM_BOUNDARY.md",
+      "bytes": 1559,
+      "sha256": "0ecca029b9c90963deeedb196c4ff18d8f8667420a90ef367a875c3f067d0d44",
+      "git_blob": "c4f7be2407f50400295cc9da37741008292b38e4"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/00_TERMINAL_RESULT.md",
+      "destination": "sqs20/p15-certificate/00_TERMINAL_RESULT.md",
+      "bytes": 4609,
+      "sha256": "9a552c52099e6d9c8ab10bcc04441a64a79f190bcd04e721140ea2e30007aa32",
+      "git_blob": "7fd90613e4c7edb90f10e19facec100485e45d54"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/08_LITERATURE_POSITION.md",
+      "destination": "sqs20/p15-certificate/08_LITERATURE_POSITION.md",
+      "bytes": 1382,
+      "sha256": "46e19678079cb7e110287caf8f192b8080d3d550b7dd3a1b1ee11994b7b86cdc",
+      "git_blob": "b627a207d3703c7aca8769ec2d96d6790ee7cbc7"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/MANIFEST.json",
+      "destination": "sqs20/p15-certificate/MANIFEST.json",
+      "bytes": 3542,
+      "sha256": "1c5d96db4fa2f1160ab9b588ef34cbaed4ea0d3b288eeab19e719d46444523ac",
+      "git_blob": "d1191e94bd8e17a54f84501b63c89d1f10409330"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/01_ROUNDS_31_40_LEDGER.md",
+      "destination": "sqs20/p15-certificate/01_ROUNDS_31_40_LEDGER.md",
+      "bytes": 4389,
+      "sha256": "87ff34b35895c342fa3a790453b0c524a8a567a8c82d31a34273a90c13a2c77a",
+      "git_blob": "9fe8293c4f3978b8c61904da465b2cda2038c9c9"
+    },
+    {
+      "archive_member": "JSPACE-v0.7-ERDOS835-40R/06_GOLD_SWEEP.md",
+      "destination": "sqs20/p15-certificate/06_GOLD_SWEEP.md",
+      "bytes": 5200,
+      "sha256": "eb79758b38ba3b25bf756f207f772bdedf9aba1dd335b8ac7d5d4a2c97f085f3",
+      "git_blob": "ab9a1cb2e17420676c82c0c46abafa140b6470cf"
+    }
+  ]
+}

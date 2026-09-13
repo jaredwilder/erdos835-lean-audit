@@ -1,0 +1,913 @@
+{
+  "result": "PASS",
+  "scope": "Exact finite P15 only; no global large-set conclusion or fresh Lean build",
+  "pack_sha256": "ff0785a930f5c2df406f781881d0586007c596214f5a789e9990a7a30f3ea0fb",
+  "checks": {
+    "verify_pack": {
+      "systems": 15,
+      "blocks_per_system": 285,
+      "union_blocks": 4275,
+      "remainder_blocks": 570,
+      "triples": 1140,
+      "coverage_per_triple": 15,
+      "remainder_blocks_per_triple": 2,
+      "status": "PASS"
+    },
+    "verify_one_coordinate_rigidity": {
+      "theorem": "Every 14-subpack of this explicit 15-pack has the original missing constituent as its unique disjoint SQS(20) completion.",
+      "method": "GF(5) sparse RREF + exhaustive 5^6 nullspace enumeration for each constituent",
+      "systems": [
+        {
+          "system": 0,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            827,
+            841,
+            846,
+            852,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 1,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            825,
+            839,
+            842,
+            848,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 2,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            828,
+            843,
+            851,
+            853,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 3,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            826,
+            830,
+            841,
+            844,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 4,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            829,
+            837,
+            846,
+            848,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 5,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            829,
+            838,
+            846,
+            849,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 6,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            832,
+            838,
+            844,
+            850,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 7,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            829,
+            840,
+            850,
+            853,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 8,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            830,
+            832,
+            837,
+            839,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 9,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            827,
+            832,
+            840,
+            844,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 10,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            830,
+            835,
+            846,
+            848,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 11,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            831,
+            837,
+            846,
+            850,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 12,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            833,
+            838,
+            851,
+            853,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 13,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            833,
+            835,
+            838,
+            842,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        },
+        {
+          "system": 14,
+          "field": 5,
+          "variables": 855,
+          "equations": 1140,
+          "rank": 849,
+          "nullity": 6,
+          "free_coordinates": [
+            569,
+            830,
+            832,
+            835,
+            841,
+            854
+          ],
+          "nonzero_binary_nullvectors": 0,
+          "rigid": true
+        }
+      ],
+      "status": "PASS"
+    },
+    "verify_pair_trade_profiles": {
+      "theorem": "All 105 constituent pairs have exactly two trade-component types.",
+      "interpretation": {
+        "same_construction_row": "three indecomposable trade components, per-side volumes 30,30,225",
+        "cross_construction_row": "one indecomposable trade component, per-side volume 285"
+      },
+      "classes": [
+        {
+          "profile": [
+            30,
+            30,
+            225
+          ],
+          "pair_count": 30,
+          "pairs": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              10,
+              11
+            ],
+            [
+              10,
+              12
+            ],
+            [
+              10,
+              13
+            ],
+            [
+              10,
+              14
+            ],
+            [
+              11,
+              12
+            ],
+            [
+              11,
+              13
+            ],
+            [
+              11,
+              14
+            ],
+            [
+              12,
+              13
+            ],
+            [
+              12,
+              14
+            ],
+            [
+              13,
+              14
+            ]
+          ]
+        },
+        {
+          "profile": [
+            285
+          ],
+          "pair_count": 75,
+          "pairs": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              0,
+              13
+            ],
+            [
+              0,
+              14
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              1,
+              12
+            ],
+            [
+              1,
+              13
+            ],
+            [
+              1,
+              14
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              2,
+              12
+            ],
+            [
+              2,
+              13
+            ],
+            [
+              2,
+              14
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              3,
+              12
+            ],
+            [
+              3,
+              13
+            ],
+            [
+              3,
+              14
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              4,
+              12
+            ],
+            [
+              4,
+              13
+            ],
+            [
+              4,
+              14
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              5,
+              13
+            ],
+            [
+              5,
+              14
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              6,
+              12
+            ],
+            [
+              6,
+              13
+            ],
+            [
+              6,
+              14
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              7,
+              13
+            ],
+            [
+              7,
+              14
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              8,
+              13
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              9,
+              12
+            ],
+            [
+              9,
+              13
+            ],
+            [
+              9,
+              14
+            ]
+          ]
+        }
+      ],
+      "status": "PASS"
+    },
+    "verify_spectral_trade_identity": {
+      "instance": "sacrifice systems 0,1,2",
+      "M_shape": [
+        1140,
+        1425
+      ],
+      "residual_vertices": 1425,
+      "residual_edges": 11400,
+      "regular_degree": 16,
+      "identity": "M^T M = A + 4 I (verified combinatorially)",
+      "forced_nullity_lower_bound": 285,
+      "consequence": "A has eigenvalue -4; ker(M) equals the signed Steiner-trade space and the -4 eigenspace.",
+      "status": "PASS"
+    }
+  },
+  "historical_result_objects_match": true,
+  "independent_residual": {
+    "vertices": 570,
+    "regular_degree": 4,
+    "component_sizes": [
+      5,
+      5,
+      5,
+      5,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      250
+    ],
+    "K5_count": 4,
+    "K5_witnesses": [
+      [
+        [
+          0,
+          4,
+          8,
+          12
+        ],
+        [
+          0,
+          4,
+          8,
+          16
+        ],
+        [
+          0,
+          4,
+          12,
+          16
+        ],
+        [
+          0,
+          8,
+          12,
+          16
+        ],
+        [
+          4,
+          8,
+          12,
+          16
+        ]
+      ],
+      [
+        [
+          1,
+          5,
+          9,
+          13
+        ],
+        [
+          1,
+          5,
+          9,
+          17
+        ],
+        [
+          1,
+          5,
+          13,
+          17
+        ],
+        [
+          1,
+          9,
+          13,
+          17
+        ],
+        [
+          5,
+          9,
+          13,
+          17
+        ]
+      ],
+      [
+        [
+          2,
+          6,
+          10,
+          14
+        ],
+        [
+          2,
+          6,
+          10,
+          18
+        ],
+        [
+          2,
+          6,
+          14,
+          18
+        ],
+        [
+          2,
+          10,
+          14,
+          18
+        ],
+        [
+          6,
+          10,
+          14,
+          18
+        ]
+      ],
+      [
+        [
+          3,
+          7,
+          11,
+          15
+        ],
+        [
+          3,
+          7,
+          11,
+          19
+        ],
+        [
+          3,
+          7,
+          15,
+          19
+        ],
+        [
+          3,
+          11,
+          15,
+          19
+        ],
+        [
+          7,
+          11,
+          15,
+          19
+        ]
+      ]
+    ],
+    "max_retained_systems_in_full_large_set": 12,
+    "min_replaced_systems": 3
+  }
+}

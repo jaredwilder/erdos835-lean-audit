@@ -1,0 +1,42 @@
+{
+  "campaign": "J-SPACE v0.7 Erd\u0151s #835 Rounds 31-40",
+  "erdos_835_closed": false,
+  "one_coordinate_rigidity": {
+    "systems_certified": 15,
+    "rank_mod5_each": 849,
+    "variables_each": 855,
+    "nullity_each": 6,
+    "vectors_checked_each": 15625,
+    "nonzero_binary_trades": 0
+  },
+  "pair_trade_profiles": {
+    "pairs_total": 105,
+    "same_row_pairs": 30,
+    "same_row_profile": [
+      30,
+      30,
+      225
+    ],
+    "cross_row_pairs": 75,
+    "cross_row_profile": [
+      285
+    ]
+  },
+  "q5_representative": {
+    "vertices": 1425,
+    "edges": 11400,
+    "degree": 16,
+    "triple_vertices": 1140,
+    "incidence_shape": [
+      1140,
+      1425
+    ],
+    "forced_trade_space_dimension_lower_bound": 285
+  },
+  "claim_boundary": {
+    "large_set_sqs20": "OPEN",
+    "physical_three_system_trade": "UNRESOLVED",
+    "erdos_835": "OPEN"
+  },
+  "status": "PASS"
+}

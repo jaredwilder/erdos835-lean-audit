@@ -41,6 +41,30 @@ Two further exact finite results are recorded in [`sqs20/P15-RIGIDITY-AND-TRADES
 
 For the `q=5` repair graph, the incidence identity `M^T M=A+4I` identifies the `-4` eigenspace with the linear Steiner 3-trade space.
 
+### Exact source package and fresh replay
+
+The [explicit 15-system pack](sqs20/p15-certificate/data/eh15_sqs20.json),
+four original verifiers, historical receipts and research notes have now been
+recovered from `JSPACE-v0.7-ERDOS835-40R.zip`. All 25 source files are preserved
+byte-for-byte and indexed in [P15-SOURCE-MANIFEST.json](sqs20/P15-SOURCE-MANIFEST.json).
+
+Python 3, standard library only, from this repository's root:
+
+```sh
+python verification/verify_p15_source.py
+python verification/replay_p15.py
+```
+
+The replay uses a temporary copy so historical receipts remain intact. It
+checks the pack, all 15 GF(5) rigidity systems, all 105 pair-trade profiles and
+the representative spectral-incidence identity. A separate graph
+reconstruction checks every residual component and supplies the four exact
+`K5` witnesses establishing the repair-radius obstruction. See the
+[fresh replay receipt](verification/P15-REPLAY-2026-09-13.json).
+
+These are exact finite computations about this particular pack. They do not
+resolve the global large-set problem or repair the separate Lean dependencies.
+
 ## 2. Lean axiom audit
 
 Ten Lean proof attempts around the Johnson graph `J(32,16)` were audited under Lean 4.31.0-rc1 with the available Mathlib environment.

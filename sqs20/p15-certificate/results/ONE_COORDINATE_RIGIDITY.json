@@ -1,0 +1,277 @@
+{
+  "theorem": "Every 14-subpack of this explicit 15-pack has the original missing constituent as its unique disjoint SQS(20) completion.",
+  "method": "GF(5) sparse RREF + exhaustive 5^6 nullspace enumeration for each constituent",
+  "systems": [
+    {
+      "system": 0,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        827,
+        841,
+        846,
+        852,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 1,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        825,
+        839,
+        842,
+        848,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 2,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        828,
+        843,
+        851,
+        853,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 3,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        826,
+        830,
+        841,
+        844,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 4,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        829,
+        837,
+        846,
+        848,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 5,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        829,
+        838,
+        846,
+        849,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 6,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        832,
+        838,
+        844,
+        850,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 7,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        829,
+        840,
+        850,
+        853,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 8,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        830,
+        832,
+        837,
+        839,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 9,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        827,
+        832,
+        840,
+        844,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 10,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        830,
+        835,
+        846,
+        848,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 11,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        831,
+        837,
+        846,
+        850,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 12,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        833,
+        838,
+        851,
+        853,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 13,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        833,
+        835,
+        838,
+        842,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    },
+    {
+      "system": 14,
+      "field": 5,
+      "variables": 855,
+      "equations": 1140,
+      "rank": 849,
+      "nullity": 6,
+      "free_coordinates": [
+        569,
+        830,
+        832,
+        835,
+        841,
+        854
+      ],
+      "nonzero_binary_nullvectors": 0,
+      "rigid": true
+    }
+  ],
+  "status": "PASS"
+}

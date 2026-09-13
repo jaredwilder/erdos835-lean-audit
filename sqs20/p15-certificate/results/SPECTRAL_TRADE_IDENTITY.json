@@ -1,0 +1,14 @@
+{
+  "instance": "sacrifice systems 0,1,2",
+  "M_shape": [
+    1140,
+    1425
+  ],
+  "residual_vertices": 1425,
+  "residual_edges": 11400,
+  "regular_degree": 16,
+  "identity": "M^T M = A + 4 I (verified combinatorially)",
+  "forced_nullity_lower_bound": 285,
+  "consequence": "A has eigenvalue -4; ker(M) equals the signed Steiner-trade space and the -4 eigenspace.",
+  "status": "PASS"
+}

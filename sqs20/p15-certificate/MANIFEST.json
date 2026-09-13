@@ -1,0 +1,100 @@
+{
+  "files": {
+    "00_TERMINAL_RESULT.md": {
+      "sha256": "9a552c52099e6d9c8ab10bcc04441a64a79f190bcd04e721140ea2e30007aa32",
+      "bytes": 4609
+    },
+    "01_ROUNDS_31_40_LEDGER.md": {
+      "sha256": "87ff34b35895c342fa3a790453b0c524a8a567a8c82d31a34273a90c13a2c77a",
+      "bytes": 4389
+    },
+    "02_ONE_COORDINATE_RIGIDITY.md": {
+      "sha256": "7da32bdec6e16531dce8c3b0272f76cfe7655ba79f14f24e1171ec2493895609",
+      "bytes": 1855
+    },
+    "03_PAIR_TRADE_GRAPH.md": {
+      "sha256": "5eaa383bdb6ecaab0ba8de808d1e07c95c8ecb74fe99a24b50cc00f656a5b518",
+      "bytes": 1532
+    },
+    "04_SPECTRAL_TRADE_EQUIVALENCE.md": {
+      "sha256": "c787ddb243d80ef1d4415ae848ce22a03e1118ea83016453e15ddd01a055357a",
+      "bytes": 1240
+    },
+    "05_PHYSICAL_VS_GAUGE_TRADES.md": {
+      "sha256": "cd7fd7e7d76e0b6211864f549e8ec42e1ba75b976d824252d492a25cbb11a6bc",
+      "bytes": 1278
+    },
+    "06_GOLD_SWEEP.md": {
+      "sha256": "eb79758b38ba3b25bf756f207f772bdedf9aba1dd335b8ac7d5d4a2c97f085f3",
+      "bytes": 5200
+    },
+    "07_CLAIM_BOUNDARY.md": {
+      "sha256": "0ecca029b9c90963deeedb196c4ff18d8f8667420a90ef367a875c3f067d0d44",
+      "bytes": 1559
+    },
+    "08_LITERATURE_POSITION.md": {
+      "sha256": "46e19678079cb7e110287caf8f192b8080d3d550b7dd3a1b1ee11994b7b86cdc",
+      "bytes": 1382
+    },
+    "README.md": {
+      "sha256": "71ecbfc8167fc6650bed88e9ab8846674a9249f124a69053dcff63a21b32ae4d",
+      "bytes": 1097
+    },
+    "data/eh15_remainder_certificate.json": {
+      "sha256": "b2b276f1db9c0cb1ba1ff65b835a2d0a8c748a513731e09ac951dd3f1bc7c6b3",
+      "bytes": 30003
+    },
+    "data/eh15_sqs20.json": {
+      "sha256": "ff0785a930f5c2df406f781881d0586007c596214f5a789e9990a7a30f3ea0fb",
+      "bytes": 265332
+    },
+    "lean/FORMALIZATION_PLAN.md": {
+      "sha256": "28a31dde4b892f5c304fe3d8849a54819c2cd3e674e47c03c0b60ba0ab42985e",
+      "bytes": 1934
+    },
+    "replay.log": {
+      "sha256": "70ffa798a2318be3cd6d6ec6b805272d0dfdb2e30b25bdddca716711f430b0ad",
+      "bytes": 11179
+    },
+    "results/ONE_COORDINATE_RIGIDITY.json": {
+      "sha256": "a6395c459b131978a42e605f06b3d719a38c9a9cc7b89b434fd35331e709a089",
+      "bytes": 4942
+    },
+    "results/PAIR_TRADE_PROFILES.json": {
+      "sha256": "c96f62a057b12d966694760ff32af93aca5987cf895ad624d6fdba3b2ca5a15d",
+      "bytes": 5462
+    },
+    "results/REPLAY.log": {
+      "sha256": "70ffa798a2318be3cd6d6ec6b805272d0dfdb2e30b25bdddca716711f430b0ad",
+      "bytes": 11179
+    },
+    "results/ROUND_31_40_SUMMARY.json": {
+      "sha256": "f7fc1837f0d6b5043c98ae34aacfd99deac410005dcbbec85d0c56ae01de8f06",
+      "bytes": 890
+    },
+    "results/SPECTRAL_TRADE_IDENTITY.json": {
+      "sha256": "51e63a2e32ef766dcc28a3b5de9ea34ed3cf08a2ce3cdeb8bd6f9e6bf7b261c5",
+      "bytes": 388
+    },
+    "src/replay_all.py": {
+      "sha256": "ee52d82dcb08e12e2e837d7a246e394c2c4cfbfaa07cacd6011892fdef814f4c",
+      "bytes": 371
+    },
+    "src/verify_one_coordinate_rigidity.py": {
+      "sha256": "e7bb0a7c7f37275333f24a3f60702a6ae52cec3938438cacfc725aa82645342d",
+      "bytes": 3319
+    },
+    "src/verify_pack.py": {
+      "sha256": "9a86eb99255fb0d3f45aaa92efd62eddb027dc47dccff88ca1f3d1dd55437dbb",
+      "bytes": 1135
+    },
+    "src/verify_pair_trade_profiles.py": {
+      "sha256": "74f84acee61bc9e768581602559c638548609193127d45606a6cf91f9b671218",
+      "bytes": 2054
+    },
+    "src/verify_spectral_trade_identity.py": {
+      "sha256": "c50da20130682d328f60c830e8d8a4e60af7b22ac7475b67084981946a0e631d",
+      "bytes": 1725
+    }
+  }
+}
