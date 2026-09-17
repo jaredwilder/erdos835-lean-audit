@@ -1,102 +1,120 @@
-# Erdős #835 — Johnson graph and SQS(20) research
+# Erdős #835 — SQS(20) completion and Johnson-graph formalization
 
-A focused public home for Jared Wilder's work around Erdős Problem #835, including the Johnson-graph formalization audit and an independent SQS(20) completion/rigidity program.
+Two complementary pieces of work around Erdős #835: an exact finite program for completing a 15-pack of Steiner quadruple systems on 20 points, and an audit of a Lean route through the Johnson graph `J(32,16)`.
 
-The useful mathematics here now has **two distinct evidence lanes**. Keeping them together makes the problem easier to follow than scattering one lane through a Lean-audit repo and the other through a general archive.
+## Residual-graph completion theorem
 
-## 1. SQS(20) completion and rigidity
+Let
 
-The design-theory route starts from an explicit reconstructed 15-pack of pairwise-disjoint Steiner quadruple systems on 20 points.
+\[
+P=\{S_1,\ldots,S_m\}
+\]
 
-### Residual completion theorem
+be pairwise block-disjoint Steiner quadruple systems on `v` points and set
 
-For a partial large set `P={S_1,...,S_m}` of pairwise block-disjoint SQS on `v` points, set `q=v-3-m`. Let `R(P)` have the uncovered 4-subsets as vertices, with adjacency when two blocks share a triple.
+\[
+q=v-3-m.
+\]
+
+Construct the residual graph `R(P)` whose vertices are the uncovered 4-subsets, with two residual blocks adjacent when they share a triple.
 
 Then
 
-> **`P` completes to a large set of SQS(v) iff `chi(R(P))=q`.**
+> `P` extends to a large set of `SQS(v)` if and only if `χ(R(P))=q`.
 
-Moreover
+Moreover,
 
-- `|V(R)| = q*C(v,3)/4`;
-- `deg R = 4(q-1)`;
-- `|E(R)| = C(v,3) C(q,2)`.
+\[
+|V(R)|=q\binom v3/4,
+\]
 
-Full proof: [`sqs20/RESIDUAL-GRAPH-THEOREM.md`](sqs20/RESIDUAL-GRAPH-THEOREM.md).
+\[
+\deg R=4(q-1),
+\]
 
-### Exact 15-pack results
+and
 
-For the reconstructed 15-pack on 20 points:
+\[
+|E(R)|=\binom v3\binom q2.
+\]
 
-- 15 systems × 285 blocks = 4,275 covered four-sets;
-- 570 four-sets remain uncovered;
-- the `q=2` residual graph is 4-regular with component sizes `250, 25×12, 5×4`;
-- the four `K5` components rule out completing **this specific 15-pack** by merely adding two systems;
-- any large set retaining members of this pack can retain at most 12 of the 15, so at least three constituents must change.
+The proof is in [`sqs20/RESIDUAL-GRAPH-THEOREM.md`](sqs20/RESIDUAL-GRAPH-THEOREM.md).
 
-Two further exact finite results are recorded in [`sqs20/P15-RIGIDITY-AND-TRADES.md`](sqs20/P15-RIGIDITY-AND-TRADES.md):
+## Exact results for the reconstructed 15-pack
 
-1. **One-coordinate rigidity:** every 14-subpack uniquely forces its fifteenth constituent. The relevant `1140×855` systems have GF(5) rank 849/nullity 6, and all `5^6=15,625` nullspace coefficient combinations were checked with no nonzero binary trade.
-2. **Pair-trade classification:** all `C(15,2)=105` pair unions have exactly two Steiner 3-trade profiles: 30 same-row pairs with per-side volumes `(30,30,225)`, and 75 cross-row pairs with one indecomposable per-side volume-285 component.
+The explicit pack contains
 
-For the `q=5` repair graph, the incidence identity `M^T M=A+4I` identifies the `-4` eigenspace with the linear Steiner 3-trade space.
+```text
+15 systems × 285 blocks = 4,275 covered 4-sets.
+```
 
-### Exact source package and fresh replay
+Exactly 570 four-sets remain uncovered. For the corresponding `q=2` residual graph:
 
-The [explicit 15-system pack](sqs20/p15-certificate/data/eh15_sqs20.json),
-four original verifiers, historical receipts and research notes have now been
-recovered from `JSPACE-v0.7-ERDOS835-40R.zip`. All 25 source files are preserved
-byte-for-byte and indexed in [P15-SOURCE-MANIFEST.json](sqs20/P15-SOURCE-MANIFEST.json).
+- the graph is 4-regular;
+- component sizes are `250, 25×12, 5×4`;
+- the four `K5` components show that this particular 15-pack cannot be completed merely by adding two further systems.
 
-Python 3, standard library only, from this repository's root:
+Any large set retaining systems from this pack can retain at most 12 of the 15; at least three constituents must change.
+
+## Rigidity and pair trades
+
+Every 14-subpack uniquely forces the fifteenth system. The associated `1140×855` linear systems have GF(5) rank 849 and nullity 6; all `5^6=15,625` nullspace coefficient combinations were checked with no nonzero binary trade.
+
+All
+
+\[
+\binom{15}{2}=105
+\]
+
+pair unions fall into two exact trade profiles:
+
+- 30 same-row pairs with per-side volumes `(30,30,225)`;
+- 75 cross-row pairs with one indecomposable per-side volume-285 component.
+
+For the `q=5` repair graph, the incidence identity
+
+\[
+M^TM=A+4I
+\]
+
+identifies the `-4` eigenspace with the linear Steiner 3-trade space.
+
+## Verification
+
+The explicit 15-system pack, four original verifiers, receipts, and source notes are preserved under `sqs20/`.
 
 ```sh
 python verification/verify_p15_source.py
 python verification/replay_p15.py
 ```
 
-The replay uses a temporary copy so historical receipts remain intact. It
-checks the pack, all 15 GF(5) rigidity systems, all 105 pair-trade profiles and
-the representative spectral-incidence identity. A separate graph
-reconstruction checks every residual component and supplies the four exact
-`K5` witnesses establishing the repair-radius obstruction. See the
-[fresh replay receipt](verification/P15-REPLAY-2026-09-13.json).
+The replay checks the pack, all 15 GF(5) rigidity systems, all 105 pair-trade profiles, the representative spectral identity, and the residual graph reconstruction.
 
-These are exact finite computations about this particular pack. They do not
-resolve the global large-set problem or repair the separate Lean dependencies.
+## Johnson-graph Lean audit
 
-## 2. Lean axiom audit
+Ten Lean attempts around `J(32,16)` were inspected under Lean 4.31.0-rc1.
 
-Ten Lean proof attempts around the Johnson graph `J(32,16)` were audited under Lean 4.31.0-rc1 with the available Mathlib environment.
+The proposed lower bound
 
-The central result is a proof-status correction: the apparent derivation of
+\[
+17\le\chi(J(32,16))
+\]
 
-`17 <= chi(J(32,16))`
+is not completed by the current formal files because it depends on upstream theorems containing `sorryAx`, including `indepNum_johnson_le_johnsonBound`.
 
-inherits upstream `sorryAx` through imported lemmas, including an `indepNum_johnson_le_johnsonBound` theorem defined upstream with `:= sorry`. Local compilation therefore does **not** constitute a completed proof of that lower bound.
+The audit does recover several clean finite statements, including
 
-The audit also found:
+```text
+johnsonBound 32 4 16 = 35357670
+Nat.choose 32 16 = 601080390.
+```
 
-- nine smaller finite claims using `native_decide`;
-- three smaller claims with clean classical axiom footprints;
-- two finite list statements recoverable with zero-axiom kernel `decide`;
-- clean numerical identities `johnsonBound 32 4 16 = 35357670` and `Nat.choose 32 16 = 601080390`;
-- one proposed route that is inconsistent with its own assumption `chi(J(32,16))=17` while attempting to derive `18 <= chi(J(32,16))`.
+The formal sources are under [`JS835-LEAN-RESULTS/`](JS835-LEAN-RESULTS/).
 
-The formal artifacts are under [`JS835-LEAN-RESULTS/`](JS835-LEAN-RESULTS/).
+## Remaining finite problem
 
-## Current frontier
+The next unresolved SQS(20) case is the `q=5` repair regime: determine whether changing three systems can make the residual graph 5-colorable, or prove that no such repair exists.
 
-The SQS(20) program has converted large-set completion into exact residual graph coloring and established a repair radius and finite rigidity/trade structure for one explicit 15-pack. The unresolved high-value branch is the `q=5` repair regime: determine whether suitable three-system sacrifices produce a 5-colorable residual graph, or certify obstruction.
+The Johnson-graph route has a separate task: replace the upstream `sorryAx` dependencies before using it as a formal proof of the chromatic lower bound.
 
-The Johnson-graph formalization lane has a different frontier: replace or independently prove the upstream `sorryAx` dependencies before treating the proposed chromatic lower bound as formally established.
-
-## Provenance
-
-The SQS(20) material was first released in the general intake archive at `jaredwilder/unpublished-math-papers/erdos835-sqs20/`. It is promoted here because #835 now has a coherent multi-artifact research surface. The archive copy remains useful for provenance; this repository is the preferred problem-level home.
-
-Author: Jared Wilder. First public timestamp: 2026-09-11.
-
-## License
-
-Apache-2.0.
+Author: Jared Wilder. License: Apache-2.0.
